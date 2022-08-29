@@ -1,10 +1,10 @@
-import "../App.css";
-import logo from "../img/logo-gameporium.png";
+import "./NavBar.css";
+import logo from "../../assets/logo-gameporium.png";
+import shoppingCart from "../../assets/shopping-cart-64px.png";
 
 function NavBar() {
   return (
-    <nav className="container">
-      <div className="row">
+      <nav className="row">
         <div className="col-md-2" id="navbar-logo">
           <img src={logo} alt="Logo Gameporium" />
         </div>
@@ -24,15 +24,17 @@ function NavBar() {
             </li>
           </ul>
         </div>
-        <div className="col-md-2" id="navbar-login">
+        <div className="col-md-1" id="navbar-login">
           <ul className="menu">
             <li className="cta-destacado">
               <a href="index.html">Login</a>
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+        <div className="col-md-1" id="navbar-cart">
+          <img src={shoppingCart} alt="Cart" />
+        </div>
+      </nav>
   );
 }
 

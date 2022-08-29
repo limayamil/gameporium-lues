@@ -53,39 +53,6 @@ a:hover {
   color: #e44331;
 }
 
-/* Nav */
-
-#navbar-menu, #navbar-login {
-  display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.menu {
-    list-style-type: none;
-    padding-inline-start: 0;
-}
-
-.menu li {
-    display: inline-block;
-    border: 1.5px solid #FFF;
-    vertical-align: middle;
-    border-radius: 32px;
-    padding: 8px 16px 10px 16px;
-    margin: 0 8px;
-}
-
-.menu li.cta-destacado {
-  display: inline-block;
-  background-color: #FFF;
-  font-weight: bold;
-  color: #000;
-  vertical-align: middle;
-  border-radius: 32px;
-  padding: 8px 16px 10px 16px;
-  margin: 0 8px;
-}
-
 /* Contenido */
 
 h2 {

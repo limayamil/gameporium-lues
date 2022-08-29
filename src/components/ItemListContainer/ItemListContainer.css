@@ -1,0 +1,8 @@
+/* Item List Container */
+
+.greeting {
+    color: #e4432d;
+    text-decoration:underline;
+    padding-bottom: 5px;
+    font-family: monospace;
+}
