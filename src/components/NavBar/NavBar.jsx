@@ -1,6 +1,6 @@
 import "./NavBar.css";
+import CartWidget from "../CartWidget/CartWidget";
 import logo from "../../assets/logo-gameporium.png";
-import shoppingCart from "../../assets/shopping-cart-64px.png";
 
 function NavBar() {
   return (
@@ -31,9 +31,7 @@ function NavBar() {
             </li>
           </ul>
         </div>
-        <div className="col-md-1" id="navbar-cart">
-          <img src={shoppingCart} alt="Cart" />
-        </div>
+        <CartWidget />
       </nav>
   );
 }

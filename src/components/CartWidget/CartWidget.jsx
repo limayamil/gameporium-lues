@@ -1,10 +1,11 @@
+import shoppingCart from "../../assets/shopping-cart-64px.png";
 import "./CartWidget.css";
 
 function CartWidget() {
   return (
-    <nav className="container">
-      
-    </nav>
+    <div className="col-md-1" id="navbar-cart">
+        <img src={shoppingCart} alt="Cart" />
+    </div>
   );
 }
 
