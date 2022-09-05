@@ -1,0 +1,15 @@
+.btn-secondary {
+    background-color: #e4432d;
+    border: 1px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #e4432d;
+}
+
+.btn-secondary-invert {
+    background-color: white;
+    border: 1px solid white;
+    text-align: center;
+}
