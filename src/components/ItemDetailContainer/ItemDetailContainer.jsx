@@ -4,7 +4,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import "./ItemDetailContainer.css";
 
 const ItemDetailContainer = () => {
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState();
 
   useEffect(() => {
     const getProduct = new Promise((res, rej) => {
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
       });
   }, []);
 
-  return <ItemDetail item={item} />;
+  return <div>{item && <ItemDetail item={item} />}</div>;
 };
 
 export default ItemDetailContainer;
