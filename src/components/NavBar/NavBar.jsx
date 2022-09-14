@@ -27,7 +27,7 @@ function NavBar() {
       <div className="col-md-1" id="navbar-login">
         <ul className="menu">
           <li className="cta-destacado">
-            <a href="index.html">Login</a>
+            <Link to="/">Login</Link>
           </li>
         </ul>
       </div>
