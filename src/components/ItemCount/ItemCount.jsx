@@ -20,8 +20,6 @@ const ItemCount = ({ initialQuantity, initialStock, onAdd }) => {
 
   const addProducts = () => {
     if (quantity <= itemStock) {
-      console.log("Stock: " + itemStock);
-      console.log("Cantidad: " + quantity);
       setItemStock(itemStock - quantity);
       setItemAdd(itemAdd + quantity);
       setQuantity(0);
@@ -35,7 +33,7 @@ const ItemCount = ({ initialQuantity, initialStock, onAdd }) => {
       ctaAgregar.classList.add("disabled");
       ctaAgregar.value = "No hay más stock";
     }
-  });
+  }, [ctaAgregar, itemStock]);
 
   return (
     <div className="row mt-5">

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./Item.css";
 
-const Item = ({ name, image, price }) => {
+const Item = ({ name, image, price, id }) => {
   return (
     <div className="card">
       <img src={image} alt={name} className="card-img-top" />
@@ -10,7 +11,9 @@ const Item = ({ name, image, price }) => {
         </h5>
         <p className="card-text text-center">${price}</p>
         <div className="actions text-center">
-          <button className="btn-secondary">Ver detalle</button>
+          <Link to={`/item/${id}`}>
+            <button className="btn-secondary">Ver detalle</button>
+          </Link>
         </div>
       </div>
     </div>
