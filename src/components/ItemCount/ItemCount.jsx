@@ -1,11 +1,14 @@
 import "./ItemCount.css";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const ItemCount = ({ initialQuantity, initialStock, onAdd }) => {
-  const [quantity, setQuantity] = useState(initialQuantity);
-  const [itemStock, setItemStock] = useState(initialStock);
-  const [itemAdd, setItemAdd] = useState(onAdd);
+// { initialStock, initialQuantity, onAdd, quantity, setQuantity, item }
+const ItemCount = (props) => {
+  const { item } = props;
+  const [quantity, setQuantity] = useState(props.quantity);
+  const [itemStock, setItemStock] = useState(props.initialStock);
+  //const [itemAdd, setItemAdd] = useState(props.onAdd);
   const ctaAgregar = document.getElementById("ctaAgregar");
 
   // Función de cambio de cantidad elegida, tras click en + o -.
@@ -21,7 +24,7 @@ const ItemCount = ({ initialQuantity, initialStock, onAdd }) => {
   const addProducts = () => {
     if (quantity <= itemStock) {
       setItemStock(itemStock - quantity);
-      setItemAdd(itemAdd + quantity);
+      props.onAdd(item, quantity);
       setQuantity(0);
     }
   };
@@ -74,6 +77,16 @@ const ItemCount = ({ initialQuantity, initialStock, onAdd }) => {
               addProducts();
             }}
           />
+        </div>
+        <div className="d-grid mt-3">
+          <Link to="/cart">
+            <input
+              type="button"
+              className="btn btn-primary"
+              value="Finalizar compra"
+              id="ctaFinalizar"
+            />
+          </Link>
         </div>
       </div>
     </div>
