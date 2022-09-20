@@ -30,8 +30,6 @@ const ItemCount = (props) => {
       ctaAgregar.classList.add("disabled");
       ctaAgregar.value = "No hay más stock";
     }
-
-    cartTotal() && console.log(cartTotal());
   }, [ctaAgregar, itemStock, cartTotal]);
 
   return (
