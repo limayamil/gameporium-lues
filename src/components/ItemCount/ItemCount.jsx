@@ -1,25 +1,21 @@
 import "./ItemCount.css";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../CartContext/CartContext";
 
-// { initialStock, initialQuantity, onAdd, quantity, setQuantity, item }
 const ItemCount = (props) => {
+  const { cartTotal } = useContext(CartContext);
   const { item } = props;
   const [quantity, setQuantity] = useState(props.quantity);
   const [itemStock, setItemStock] = useState(props.initialStock);
-  //const [itemAdd, setItemAdd] = useState(props.onAdd);
   const ctaAgregar = document.getElementById("ctaAgregar");
-
-  // Función de cambio de cantidad elegida, tras click en + o -.
 
   const modifyQuantity = (value) => {
     if (value > 0 && value <= itemStock) {
       setQuantity(value);
     }
   };
-
-  // Función de agregar producto, tras click en ctaAgregar.
 
   const addProducts = () => {
     if (quantity <= itemStock) {
@@ -29,14 +25,14 @@ const ItemCount = (props) => {
     }
   };
 
-  // Controlo si aún hay stock tras agregar los productos al carrito.
-
   useEffect(() => {
     if (itemStock === 0) {
       ctaAgregar.classList.add("disabled");
       ctaAgregar.value = "No hay más stock";
     }
-  }, [ctaAgregar, itemStock]);
+
+    cartTotal() && console.log(cartTotal());
+  }, [ctaAgregar, itemStock, cartTotal]);
 
   return (
     <div className="row mt-5">
@@ -78,16 +74,20 @@ const ItemCount = (props) => {
             }}
           />
         </div>
-        <div className="d-grid mt-3">
-          <Link to="/cart">
-            <input
-              type="button"
-              className="btn btn-primary"
-              value="Finalizar compra"
-              id="ctaFinalizar"
-            />
-          </Link>
-        </div>
+        {cartTotal() > 0 ? (
+          <div className="d-grid mt-3">
+            <Link to="/cart">
+              <input
+                type="button"
+                className="btn btn-primary"
+                value="Finalizar compra"
+                id="ctaFinalizar"
+              />
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

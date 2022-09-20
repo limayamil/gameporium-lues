@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../CartContext/CartContext";
 
 const ItemDetail = ({ item }) => {
+  const { addItem } = useContext(CartContext);
   const [storedQuantity, setQuantity] = useState(0);
+
   const onAdd = (item, addedQuantity) => {
     setQuantity(storedQuantity + addedQuantity);
+    addItem(item, addedQuantity);
   };
 
   return (
