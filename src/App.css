@@ -59,3 +59,18 @@ h2 {
   text-align: center;
   margin: 24px 0;
 }
+
+/* CTAs */
+
+.cta-danger {
+  background-color: #d14649;
+  color: white;
+  border: none;
+  padding: 8px 16px 12px 16px;
+  border-radius: 32px;
+}
+
+.cta-danger:hover {
+  background-color: white;
+  color: #d14649;
+}

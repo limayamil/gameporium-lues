@@ -6,5 +6,5 @@
 - cambiar código de forma que el botón finalizar compra aparezca luego de que haya algo en el carrito. @done
 - 
 - a tener en cuenta: axios (para facilitar llamadas a API con fetch y demás)
-- en app.js puedo usar <> </> (fragment) para no tener que sí o sí encerrar todo en un <div> o similar.
-- con "rafce" se puede crear la base de un componente react rápidamente, de arrow function.
+- en app.js puedo usar <> </> (fragment) para no tener que sí o sí encerrar todo en un <div> o similar. @done
+- - con "rafce" se puede crear la base de un componente react rápidamente, de arrow function. @done
