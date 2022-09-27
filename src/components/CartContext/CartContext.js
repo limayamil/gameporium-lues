@@ -8,8 +8,10 @@ const Provider = ({ children }) => {
   const addItem = (item, quantity) => {
     const product = { ...item, quantity };
     if (isInCart(item.id)) {
+      console.log("Se agrega un producto ya agregado anteriormente");
       sumQuantity(product);
     } else {
+      console.log("Se agrega un producto nuevo");
       setCart([...cart, { ...item, quantity: quantity }]);
     }
   };
@@ -26,10 +28,12 @@ const Provider = ({ children }) => {
   const sumQuantity = (product) => {
     const cartUpdated = cart.map((productInCart) => {
       if (product.id === productInCart.id) {
+        console.log(product.id + " comparo a " + productInCart.id);
         const productUpdated = {
           ...productInCart,
-          quantity: product.quantity,
+          quantity: productInCart.quantity + product.quantity,
         };
+        console.log(productUpdated);
         return productUpdated;
       } else {
         return productInCart;
