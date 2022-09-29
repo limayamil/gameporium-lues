@@ -8,7 +8,7 @@ const ItemCount = (props) => {
   const { cartTotal } = useContext(CartContext);
   const { item } = props;
   const [quantity, setQuantity] = useState(props.quantity);
-  const [itemStock, setItemStock] = useState(props.initialStock);
+  const [itemStock, setItemStock] = useState(item.stock);
   const ctaAgregar = document.getElementById("ctaAgregar");
 
   const modifyQuantity = (value) => {
@@ -26,11 +26,12 @@ const ItemCount = (props) => {
   };
 
   useEffect(() => {
+    setItemStock(item.stock);
     if (itemStock === 0) {
       ctaAgregar.classList.add("disabled");
       ctaAgregar.value = "No hay más stock";
     }
-  }, [ctaAgregar, itemStock, cartTotal]);
+  }, [ctaAgregar, itemStock, cartTotal, item.stock]);
 
   return (
     <div className="row mt-5">

@@ -2,16 +2,14 @@ import React, { useState, createContext } from "react";
 
 export const CartContext = createContext();
 
-const Provider = ({ children }) => {
+const Provider = (props) => {
   const [cart, setCart] = useState([]);
 
   const addItem = (item, quantity) => {
     const product = { ...item, quantity };
     if (isInCart(item.id)) {
-      console.log("Se agrega un producto ya agregado anteriormente");
       sumQuantity(product);
     } else {
-      console.log("Se agrega un producto nuevo");
       setCart([...cart, { ...item, quantity: quantity }]);
     }
   };
@@ -62,7 +60,7 @@ const Provider = ({ children }) => {
     <CartContext.Provider
       value={{ cart, addItem, deleteOne, deleteAll, cartTotal, totalUnits }}
     >
-      {children}
+      {props.children}
     </CartContext.Provider>
   );
 };

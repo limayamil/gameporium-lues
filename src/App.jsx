@@ -6,10 +6,10 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import Cart from "./components/Cart/Cart";
 import Provider from "./components/CartContext/CartContext";
 
-function App() {
+const App = () => {
   return (
-    <div className="container">
-      <Provider>
+    <Provider>
+      <div className="container">
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer greeting="usuario" />} />
@@ -20,10 +20,9 @@ function App() {
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />}></Route>
         </Routes>
-      </Provider>
-      <ItemDetailContainer />
-    </div>
+      </div>
+    </Provider>
   );
-}
+};
 
 export default App;

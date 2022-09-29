@@ -1,30 +1,32 @@
 import ItemList from "../ItemList/ItemList";
-import { ProductList } from "../ProductList/ProductList";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
+import Loading from "../Loading/Loading";
 import "./ItemListContainer.css";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function ItemListContainer(props) {
   const [items, setItems] = useState([]);
   const { category } = useParams();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getProducts = new Promise((res) => {
-      setTimeout(() => {
-        res(ProductList);
-      }, 1500);
-    });
+    const productCollection = collection(db, "items");
+    const ref = category
+      ? query(productCollection, where("category", "==", category))
+      : productCollection;
 
-    if (!category) {
-      getProducts.then((res) => {
-        setItems(res);
+    getDocs(ref).then((response) => {
+      const products = response.docs.map((product) => {
+        return {
+          id: product.id,
+          ...product.data(),
+        };
       });
-    } else {
-      getProducts.then((res) => {
-        setItems(res.filter((cat) => cat.category === category));
-      });
-    }
+      setItems(products);
+      setLoading(false);
+    });
   }, [category]);
 
   return (
@@ -36,7 +38,7 @@ function ItemListContainer(props) {
           </h2>
         </div>
       </div>
-      <ItemList items={items} />
+      {loading ? <Loading /> : <ItemList items={items} />}
     </div>
   );
 }
