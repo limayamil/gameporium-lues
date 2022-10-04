@@ -58,9 +58,12 @@ const Cart = () => {
         </div>
         <div className="row mt-5">
           <div className="col-md-12 text-center">
-            <button className="cta-danger" onClick={deleteAll}>
+            <button className="cta-danger mx-3" onClick={deleteAll}>
               ¿Borrar todos?
             </button>
+            <Link to="/checkout">
+              <button className="cta-danger mx-3">Finalizar compra</button>
+            </Link>
           </div>
         </div>
       </>
